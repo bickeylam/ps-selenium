@@ -13,4 +13,6 @@ dotnet publish <TestProject> -o <Destination>
 
 dotnet clean -c Release
 dotnet clean
+
+git push origin master
 ```
