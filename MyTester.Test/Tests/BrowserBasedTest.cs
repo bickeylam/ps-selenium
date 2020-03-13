@@ -56,6 +56,7 @@ namespace MyTester.Test.Tests
             {
                 AcceptInsecureCertificates = true
             };
+            options.AddArgument("--headless");
             IWebDriver driver = new ChromeDriver(DriverPath, options);
             driver.Manage().Timeouts().AsynchronousJavaScript = DefaultWait;
             driver.Manage().Timeouts().PageLoad = DefaultWait;
