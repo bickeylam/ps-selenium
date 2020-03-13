@@ -1,4 +1,4 @@
-namespace MyTester.Test
+namespace MyTester.Test.Tests
 {
     using System;
     using System.Diagnostics;
@@ -33,6 +33,7 @@ namespace MyTester.Test
         }
 
         [TestMethod]
+        [TestCategory("smoke")]
         public void GivenSeleniumWhenSearchThenPageTitleVerified()
         {
             string term = "Selenium";
