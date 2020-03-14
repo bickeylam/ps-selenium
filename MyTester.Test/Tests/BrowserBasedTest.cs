@@ -1,6 +1,7 @@
 namespace MyTester.Test.Tests
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.IO;
     using System.Reflection;
@@ -56,7 +57,13 @@ namespace MyTester.Test.Tests
             {
                 AcceptInsecureCertificates = true
             };
-            options.AddArgument("--headless");
+            // options.AddArgument("--headless");
+            options.AddArguments(new List<string> {
+                "--headless",
+                "--silent-launch",
+                "--no-startu-window",
+                "--no-sandbox"
+            });
             IWebDriver driver = new ChromeDriver(DriverPath, options);
             driver.Manage().Timeouts().AsynchronousJavaScript = DefaultWait;
             driver.Manage().Timeouts().PageLoad = DefaultWait;
