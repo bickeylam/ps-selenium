@@ -14,5 +14,7 @@ dotnet publish <TestProject> -o <Destination>
 dotnet clean -c Release
 dotnet clean
 
+git clone https://www.github.com/bickeylam/ps-selenium.git
 git push origin master
+git pull
 ```
