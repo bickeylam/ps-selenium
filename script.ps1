@@ -4,15 +4,17 @@
     [string]$action
 )
 
+$TestFilter = 'Name=GivenSeleniumWhenSearchThenPageTitleVerified'
+
 $CurrentFolder = $PSScriptRoot
 $Configuration = 'Release'
 $TargetFramework = 'netcoreapp3.1'
 $TestProjectName = 'MyTester.Test'
 $TestResultsFolder = "$CurrentFolder\$TestProjectName\TestResults"
 $TestBinFolder = "$CurrentFolder\$TestProjectName\bin\$Configuration\$TargetFramework"
-$PublishFolder = "$CurrentFolder\$TestProjectName\bin\Publish"
+$PublishFolder = "$TestBinFolder\publish"
 $DependencyFiles = @('chromedriver.exe')
-$TestFilter = 'Name=GivenTwoNumbersWhenAddThenResultCalculated'
+
 # Get-Variable
 
 Switch ($action) {
@@ -35,12 +37,7 @@ Switch ($action) {
     'publish' {
         dotnet clean
         dotnet clean -c Release
-
-        If (Test-Path -Path $PublishFolder) {
-            Remove-Item $PublishFolder -Include * -Recurse -Force
-        }
-
-        dotnet publish $TestProjectName -o $PublishFolder -c Release
+        dotnet publish $TestProjectName -c $Configuration
         $DependencyFiles | ForEach-Object { Copy-Item "$TestBinFolder\$_" -Destination $PublishFolder }
     }
     'about' {
