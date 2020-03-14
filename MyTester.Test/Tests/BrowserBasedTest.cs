@@ -61,7 +61,7 @@ namespace MyTester.Test.Tests
             options.AddArguments(new List<string> {
                 "--headless",
                 "--silent-launch",
-                "--no-startu-window",
+                "--no-startup-window",
                 "--no-sandbox"
             });
             IWebDriver driver = new ChromeDriver(DriverPath, options);
